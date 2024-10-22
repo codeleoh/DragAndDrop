@@ -3,6 +3,12 @@ document.querySelectorAll('.item').forEach(item => {
     item.addEventListener('dragend', dragEnd);
 });
 
+document.querySelectorAll('.area').forEach(area => {
+    area.addEventListener('dragover', dragOver);
+    area.addEventListener('dragleave', dragLeave);
+    area.addEventListener('drop', drop);
+});
+
 // Functions Itens
 function dragStart(e) {
     e.currentTarget.classList.add('dragging');
@@ -12,3 +18,13 @@ function dragEnd(e) {
 }
 
 // Functions Area
+function dragOver(e) {
+    e.preventDefault();
+    e.currentTarget.classList.add('hover');
+}
+function dragLeave(e) {
+    e.currentTarget.classList.remove('hover');
+}
+function drop(e) {
+    console.log('Liberou!!')
+}
