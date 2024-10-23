@@ -19,12 +19,19 @@ function dragEnd(e) {
 
 // Functions Area
 function dragOver(e) {
-    e.preventDefault();
-    e.currentTarget.classList.add('hover');
+    if(e.currentTarget.querySelector('.item') === null) {
+        e.preventDefault();
+        e.currentTarget.classList.add('hover');
+    }
 }
 function dragLeave(e) {
     e.currentTarget.classList.remove('hover');
 }
 function drop(e) {
-    console.log('Liberou!!')
+    e.currentTarget.classList.remove('hover');
+    
+    if(e.currentTarget.querySelector('.item') === null) {
+        let dragItem = document.querySelector('.item.dragging');
+        e.currentTarget.appendChild(dragItem);
+    }
 }
